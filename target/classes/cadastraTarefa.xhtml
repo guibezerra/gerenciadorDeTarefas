@@ -12,11 +12,12 @@
 	<h:form id="cadastro">
 		<h:panelGrid columns="2">
 			<h:outputText value="Título: " />
-			<h:inputText id="tarefaTitulo"/>
+			<h:inputText id="tarefaTitulo" />
 
 			<h:outputText value="Descrição: " />
-			<h:inputTextarea id="descricaoTarefa"/>
-
+			<h:inputTextarea id="descricaoTarefa" />
+		</h:panelGrid>
+		<h:panelGrid columns="4">
 			<h:outputText value="Responsável: " />
 			<h:selectOneMenu id="responsavelTarefa">
 				<f:selectItem itemLabel="Selecione" />
@@ -32,6 +33,11 @@
 				<f:selectItem itemLabel="Alta" itemValue="alta" />
 			</h:selectOneMenu>
 		</h:panelGrid>
+		
+		<h:outputText value="DeadLine: " />
+		<h:inputText id="dataLimite" />
+		
+		<h:commandButton value="Cadastrar" />
 	</h:form>
 </h:body>
 </html>
