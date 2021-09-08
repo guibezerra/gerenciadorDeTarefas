@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,33 +12,40 @@
 <h:body>
 	<h:form id="cadastro">
 		<h:panelGrid columns="2">
-			<h:outputText value="Título: " />
-			<h:inputText id="tarefaTitulo" />
+			<p:outputLabel value="Título: " />
+			<p:inputText id="tarefaTitulo" value="#{tarefasMB.tarefa.titulo}" />
 
-			<h:outputText value="Descrição: " />
-			<h:inputTextarea id="descricaoTarefa" />
+			<p:outputLabel value="Descrição: " />
+			<p:inputTextarea id="descricaoTarefa"
+				value="#{tarefasMB.tarefa.descricao}" />
 		</h:panelGrid>
-		<h:panelGrid columns="4">
-			<h:outputText value="Responsável: " />
-			<h:selectOneMenu id="responsavelTarefa">
-				<f:selectItem itemLabel="Selecione" />
-				<f:selectItem itemLabel="Jorge Jesus" itemValue="JorgeJesus" />
-				<f:selectItem itemLabel="Renato Gaucho" itemValue="RenatoGaucho" />
-			</h:selectOneMenu>
 
-			<h:outputText value="Prioridade: " />
-			<h:selectOneMenu id="prioridadeTarefa">
+		<h:panelGrid columns="4">
+			<p:outputLabel value="Responsável: " />
+			<p:selectOneMenu id="responsavelTarefa"
+				value="#{tarefasMB.tarefa.responsavel}">
+				<f:selectItem itemLabel="Selecione" />
+				<f:selectItem itemLabel="Jorge Jesus" itemValue="Jorge Jesus" />
+				<f:selectItem itemLabel="Renato Gaucho" itemValue="Renato Gaucho" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="Prioridade: " />
+			<p:selectOneMenu id="prioridadeTarefa"
+				value="#{tarefasMB.tarefa.prioridade}">
 				<f:selectItem itemLabel="Selecione" />
 				<f:selectItem itemLabel="Baixa" itemValue="baixa" />
 				<f:selectItem itemLabel="Média" itemValue="media" />
 				<f:selectItem itemLabel="Alta" itemValue="alta" />
-			</h:selectOneMenu>
+			</p:selectOneMenu>
 		</h:panelGrid>
-		
-		<h:outputText value="DeadLine: " />
-		<h:inputText id="dataLimite" />
-		
-		<h:commandButton value="Cadastrar" />
+
+		<p:outputLabel value="DeadLine: " />
+		<p:inputText id="dataLimite" value="#{tarefasMB.tarefa.deadline}" />
+
+		<br />
+
+		<p:commandButton value="Cadastrar"
+			action="#{tarefasMB.tarefaCadastrada}" />
 	</h:form>
 </h:body>
 </html>

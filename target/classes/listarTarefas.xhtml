@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Insert title here</title>
@@ -10,30 +11,37 @@
 <h:body>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputText value="Codigo" />
-			<h:inputText id="id_tarefa" />
+			<p:outputLabel value="Codigo: " />
+			<p:inputText id="id_tarefa" />
 
-			<h:outputText value="Título/Descrição" />
-			<h:inputText id="tituloOuDescricao" />
+			<p:outputLabel value="Título/Descrição: " />
+			<p:inputText id="tituloOuDescricao" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="5">
-			<h:outputText value="Responsável" />
-			<h:selectOneMenu id="resDaTarefa">
+			<p:outputLabel value="Responsável: " />
+			<p:selectOneMenu id="resDaTarefa">
 				<f:selectItem itemLabel="Selecione" />
 				<f:selectItem itemLabel="Jorge Jesus" itemValue="JorgeJesus" />
 				<f:selectItem itemLabel="Renato Gaucho" itemValue="RenatoGaucho" />
-			</h:selectOneMenu>
+			</p:selectOneMenu>
 
-			<h:outputText value="Situação" />
-			<h:selectOneMenu id="status">
+			<p:outputLabel value="Situação: " />
+			<p:selectOneMenu id="status">
 				<f:selectItem itemLabel="Selecione" />
 				<f:selectItem itemLabel="Em Andamento" itemValue="emAndamento" />
 				<f:selectItem itemLabel="Concluido" itemValue="concluido" />
-			</h:selectOneMenu>
+			</p:selectOneMenu>
 		</h:panelGrid>
 		
-		<h:commandButton value="Buscar" />
+		<p:commandButton value="Buscar" />
 	</h:form>
+	
+	<br/>
+	
+	<!-- componente para construcao de tabela para exibicao dos dados -->
+	<h:dataTable>
+			
+	</h:dataTable>
 </h:body>
 </html>
