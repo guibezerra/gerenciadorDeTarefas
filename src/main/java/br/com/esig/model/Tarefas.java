@@ -11,9 +11,38 @@ public class Tarefas implements Serializable {
 	private String responsavel;
 	private String prioridade;
 	private String deadline;
-	
-	public Tarefas () {
-		
+	private String status;
+	private int id;
+
+	public Tarefas() {
+
+	}
+
+	public Tarefas(int id, String titulo, String descricao, String responsavel, String prioridade, String deadline, String status) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.responsavel = responsavel;
+		this.prioridade = prioridade;
+		this.deadline = deadline;
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitulo() {

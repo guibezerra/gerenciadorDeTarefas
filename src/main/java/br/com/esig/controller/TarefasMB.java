@@ -7,7 +7,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.esig.config.ConnectionFactory;
+import br.com.esig.DAO.TarefasDAO;
 import br.com.esig.model.Tarefas;
 
 @Named
@@ -20,25 +20,29 @@ public class TarefasMB implements Serializable {
 	private Tarefas tarefa;
 
 	private ArrayList<Tarefas> listaTarefas = new ArrayList<Tarefas>();
+	private TarefasDAO cadastro = new TarefasDAO();
 	
-	ConnectionFactory conn = new ConnectionFactory();
-	
-	public TarefasMB () {
-		
+	public TarefasMB() {
+
 	}
-	
-	//metodo para verificar sucesso da operacao
+
+	// metodo para realizar operacao de cadastro
 	public String tarefaCadastrada() {
 		listaTarefas.add(tarefa);
-		System.out.println("Tarefa "+tarefa.getTitulo()+" cadastrada com sucesso");
-		System.out.println("Descricao "+tarefa.getDescricao());
-		System.out.println("Responsavel "+tarefa.getResponsavel());
-		System.out.println("Prioridade "+tarefa.getPrioridade());
-		System.out.println("Deadline "+tarefa.getDeadline());
-		
-		System.out.println("conexao "+conn.getConnection());
-		
-	return "";
+		cadastro.save(tarefa);
+//		ArrayList<Tarefas> teste = cadastro.search(tarefa);
+//		for (Tarefas obj : teste) {
+//			System.out.println(obj.getId());
+//			System.out.println(obj.getTitulo());
+//			System.out.println(obj.getDescricao());
+//			System.out.println(obj.getResponsavel());
+//			System.out.println(obj.getPrioridade());
+//			System.out.println(obj.getDeadline());
+//			System.out.println(obj.getStatus());
+//			System.out.println("------------------");
+//		}
+//		
+		return "";
 	}
 
 	public Tarefas getTarefa() {
