@@ -84,5 +84,5 @@ public class Tarefas implements Serializable {
 	public void setDeadline(String deadline) {
 		this.deadline = deadline;
 	}
-
+	
 }

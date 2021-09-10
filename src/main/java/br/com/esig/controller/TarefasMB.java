@@ -4,8 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+
+import org.jboss.weld.bean.builtin.ee.HttpServletRequestBean;
 
 import br.com.esig.DAO.TarefasDAO;
 import br.com.esig.model.Tarefas;
@@ -17,31 +21,49 @@ public class TarefasMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private Tarefas tarefa;
+	private Tarefas tarefa = new Tarefas();
 
-	private ArrayList<Tarefas> listaTarefas = new ArrayList<Tarefas>();
+	private ArrayList<Tarefas> listaDeTarefas = new ArrayList<Tarefas>();
 	private TarefasDAO cadastro = new TarefasDAO();
-	
+
 	public TarefasMB() {
-
+		
 	}
+	public void initMethod() {
+		this.listaDeTarefas = new ArrayList<Tarefas>();
+		this.tarefa = new Tarefas();
+	}
+	public String initForm() {
+		initMethod();
 
+		return "/listarTarefas.xhtml";
+	}
 	// metodo para realizar operacao de cadastro
 	public String tarefaCadastrada() {
-		listaTarefas.add(tarefa);
 		cadastro.save(tarefa);
-//		ArrayList<Tarefas> teste = cadastro.search(tarefa);
-//		for (Tarefas obj : teste) {
-//			System.out.println(obj.getId());
-//			System.out.println(obj.getTitulo());
-//			System.out.println(obj.getDescricao());
-//			System.out.println(obj.getResponsavel());
-//			System.out.println(obj.getPrioridade());
-//			System.out.println(obj.getDeadline());
-//			System.out.println(obj.getStatus());
-//			System.out.println("------------------");
-//		}
-//		
+
+		return "";
+	}
+	// metodo para realizar operacao de busca
+	public String buscarTarefas() {
+
+		this.listaDeTarefas = cadastro.search(tarefa);
+		
+		System.out.println("busca realizada");
+		
+		return "";
+	}
+	// metodo deletar 
+	public String deletarTarefas(int id) {
+		this.tarefa = new Tarefas();
+		
+		tarefa.setId(id);
+		cadastro.delete(tarefa);
+		
+		this.listaDeTarefas.remove(tarefa);
+		
+		System.out.println("tarefa deletada");
+		
 		return "";
 	}
 
@@ -53,12 +75,12 @@ public class TarefasMB implements Serializable {
 		this.tarefa = tarefa;
 	}
 
-	public ArrayList<Tarefas> getListaTarefas() {
-		return listaTarefas;
+	public ArrayList<Tarefas> getListaDeTarefas() {
+		return listaDeTarefas;
 	}
 
-	public void setListaTarefas(ArrayList<Tarefas> listaTarefas) {
-		this.listaTarefas = listaTarefas;
+	public void setListaDeTarefas(ArrayList<Tarefas> listaTarefas) {
+		this.listaDeTarefas = listaTarefas;
 	}
 
 }

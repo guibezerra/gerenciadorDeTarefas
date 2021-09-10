@@ -40,5 +40,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/postgresql"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/postgresql-42.2.23.jar"/>
 	<classpathentry kind="lib" path="/home/guiba/desafioTecnico/gerenciadorDeTarefas/src/main/webapp/WEB-INF/lib/postgresql-42.2.23.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v9.0"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

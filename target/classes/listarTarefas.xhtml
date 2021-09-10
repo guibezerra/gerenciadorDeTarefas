@@ -9,39 +9,51 @@
 	<title>Listar Tarefas</title>
 </h:head>
 <h:body>
-	<h:form>
+	<h:form id="formulario">
 		<h:panelGrid columns="2">
 			<p:outputLabel value="Codigo: " />
-			<p:inputText id="id_tarefa" />
+			<p:inputText id="id_tarefa" value="#{tarefasMB.tarefa.id}" />
 
-			<p:outputLabel value="Título/Descrição: " />
-			<p:inputText id="tituloOuDescricao" />
+			<p:outputLabel value="Título: " />
+			<p:inputText id="titulo" value="#{tarefasMB.tarefa.titulo }" />
 		</h:panelGrid>
 
 		<h:panelGrid columns="5">
 			<p:outputLabel value="Responsável: " />
-			<p:selectOneMenu id="resDaTarefa">
-				<f:selectItem itemLabel="Selecione" />
+			<p:selectOneMenu id="resDaTarefa"
+				value="#{tarefasMB.tarefa.responsavel}">
+				<f:selectItem itemLabel="" />
 				<f:selectItem itemLabel="Steave Rogers" itemValue="Steave Rogers" />
 				<f:selectItem itemLabel="Tony Stark" itemValue="Tony Stark" />
 			</p:selectOneMenu>
 
 			<p:outputLabel value="Situação: " />
-			<p:selectOneMenu id="status">
-				<f:selectItem itemLabel="Selecione" />
+			<p:selectOneMenu id="status" value="#{tarefasMB.tarefa.status}">
+				<f:selectItem itemLabel="" />
 				<f:selectItem itemLabel="Em Andamento" itemValue="em andamento" />
 				<f:selectItem itemLabel="Concluido" itemValue="concluido" />
 			</p:selectOneMenu>
 		</h:panelGrid>
+		<!-- update realiza uma chamada ajax, para limpar o form e atualizar o dt -->
+		<p:commandButton value="Buscar" action="#{tarefasMB.buscarTarefas}" 
+							update = "formulario tableTarefas" />
 		
-		<p:commandButton value="Buscar" />
+		<p:commandButton value="Cadastrar" action="/cadastraTarefa.xhtml" />
 	</h:form>
-	
-	<br/>
-	
+
+	<br />
+
 	<!-- componente para construcao de tabela para exibicao dos dados -->
-	<h:dataTable>
-			
+	<h:dataTable value="#{tarefasMB.listaDeTarefas}" var="t" id="tableTarefas">
+		<h:column>#{t.id}</h:column>
+		<h:column>#{t.titulo}</h:column>
+		<h:column>#{t.descricao}</h:column>
+		<h:column>#{t.responsavel}</h:column>
+		<h:column>#{t.prioridade}</h:column>
+		<h:column>#{t.deadline}</h:column>
+		<h:column>#{t.status}</h:column>
+		<h:column> <p:commandButton value="Delete" actionListener="#{tarefasMB.deletarTarefas(t.id)}" process = "@all" /> </h:column>
+		
 	</h:dataTable>
 </h:body>
 </html>
