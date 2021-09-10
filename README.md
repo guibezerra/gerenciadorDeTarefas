@@ -7,7 +7,7 @@
 4) O metodo "delete" funciona, porém como estou usando um array para mostrar as tuplas obtidas ao usar o método de busca, não consigo renderiza-lo de forma assincrona, sem que haja uma nova consulta no banco de dados.
 5) O front da aplicação não está totalmente implementado, falta estilizar e torna-lo responsivo.
 
-## Instruçôe de uso
+## Instruções de uso
  - Importar o project no Eclipse como Existing Maven Project
  - Adicionar como servidor o Tomcat 9. Caso exista servidor, excluir, adicionar o Tomcat 9, Next e adicionar o projeto.
  - Acessar pelo navegador o endereço: http://localhost:8080/gerenciadorDeTarefas/cadastraTarefa.xhtml 
