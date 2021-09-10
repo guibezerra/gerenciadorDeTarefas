@@ -1,5 +1,7 @@
 # Gerenciador de Tarefas
 
+![alt text](https://raw.githubusercontent.com/guibezerra/gerenciadorDeTarefas/main/img/imagem.jpg)
+
 ## O que foi implementado
 1) A aplicação foi criada com Java Web utilizando JSF. 
 2) Consegui utilizar a persistência com o banco de dados PostgreSQL.
